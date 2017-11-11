@@ -6,11 +6,11 @@ export const FETCH_MOVIE = 'fetch_movie';
 export const SEARCH = 'search';
 export const CLEAR_MOVIE = 'clear_movie'
 
-const API_KEY = "902d2e4211ce689c9cd29ea18bc9533e";
+const API_KEY = "0937832cbf3fd4650f903d91d96dec31";
 
 export function fetchPopular() {
     // This request will pull the popular films from TMD
-    const request = axios.get(`https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}`);
+    const request = axios.get(`https://api.themoviedb.org/3/list/38134?api_key=${API_KEY}`);
     return {
         type: FETCH_POPULAR,
         payload: request
