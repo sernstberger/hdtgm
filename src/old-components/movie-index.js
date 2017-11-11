@@ -22,7 +22,7 @@ class MovieIndex extends Component {
     render() {
         return(
             <div className="container">
-                <h4>Popular Movies</h4>
+                <h4>Movies</h4>
                 { this.renderPopular() }
             </div>
         )

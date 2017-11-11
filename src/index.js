@@ -8,10 +8,11 @@ import promise from 'redux-promise';
 // import 'materialize-css/dist/css/materialize.min.css';
 // import 'materialize-css/dist/js/materialize.min.js'
 import './index.css';
-import Header from './components/header';
-import MovieIndex from './components/movie-index';
-import Results from './components/results';
-import Movie from './components/movie';
+// import Header from './components/header';
+// import Footer from './components/Footer';
+import Home from './components/Home';
+// import Results from './components/results';
+import Movie from './components/Movie';
 import reducers from './reducers';
 import registerServiceWorker from './registerServiceWorker';
 
@@ -21,15 +22,15 @@ ReactDOM.render(
     <Provider store={createStoreWithMiddleware(reducers)}>
         <BrowserRouter>
             <div>
-                <Route path="/" component={Header} />               
+                {/* <Header />   */}
                 
-                    <Switch >
-                        <Route path="/search/:term" component={ Results }/>
-                        <Route path="/movies/:id" component={ Movie } />
-                        <Route path="/" component={ MovieIndex } />
-                    </Switch>
+                <Switch >
+                    {/* <Route path="/search/:term" component={ Results }/> */}
+                    <Route path="/movie/:id" component={ Movie } />
+                    <Route path="/" component={ Home } />
+                </Switch>
                 
-                <footer></footer>
+                {/* <Footer /> */}
             </div>
         </BrowserRouter>
     </Provider>
