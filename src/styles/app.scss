@@ -1,5 +1,4 @@
-$btn-font-weight: bold;
-@import '~bootstrap/scss/bootstrap.scss';
+@import '../../node_modules/bootstrap/scss/bootstrap.scss';
 
 html, body {
   height: 100%;
@@ -15,12 +14,6 @@ body {
 
 
 
-.card {
-  background-color: red;
-  float: left;
-  width: 400px;
-}
-
 
 .sidebar {
   background-color: #ddd;
@@ -29,21 +22,21 @@ body {
   padding: 20px;
   width: 300px;
 }
-.sidebar img {
-  width: 100%;
-}
 
 .main {
   float: left;
   width: 900px;
 }
-.main img {
-  max-width: 100%;
-}
-
 
 
 
 iframe {
   width: 100%;
+}
+
+
+
+.navbar {
+  // background: red;
+  @include gradient-x(#4D559A, #6AADBA);
 }

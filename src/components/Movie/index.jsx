@@ -26,11 +26,11 @@ class Movie extends React.Component {
         const videoId = `https://www.youtube.com/embed/${film.videos.results[0].key}`;
 
         return(
-            <div>
+            <div className="container-fluid">
                 <div className="sidebar">
-                    <img src={ src } alt={film.title} />
+                    <img src={ src } alt={film.title} className="img-fluid" />
 
-                    <p>Watch Trailer</p>
+                    <button className="btn">Watch Trailer</button>
                 </div>
                 <div className="main">
                     <h3>Episode #104</h3>
@@ -45,18 +45,29 @@ class Movie extends React.Component {
 
                     <h1>Credits {film.credits.cast.name}</h1>
 
-                    {film.credits.cast.map((credit) =>
-                        <li>
-                            <img src={ `https://image.tmdb.org/t/p/w138_and_h175_bestv2${credit.profile_path}` } />
-                            <p>{credit.name}</p>
-                            <small>{credit.character}</small>
-                        </li>
-                    )}
+                    <div className="list-group">
+                        {film.credits.cast.map((credit) =>
+                            <div className="list-group-item">
+                                <div className="media">
+                                    {/* <img src={ `https://image.tmdb.org/t/p/w138_and_h175_bestv2${credit.profile_path}` } className="mr-3" /> */}
+                                    <img src={ `https://image.tmdb.org/t/p/w66_and_h66_bestv2${credit.profile_path}` } className="mr-3" />
+                                    <div className="media-body align-self-center">
+                                        <h5 className="mt-0 mb-1">{credit.name}</h5>
+                                        <small>{credit.character}</small>
+                                    </div>
+                                </div>
+                            </div>
+                        )}
+                    </div>
 
                    
 
                     <h3>Trailer</h3>
-                    <iframe width="560" height="315" src={videoId} frameborder="0" allowFullScreen></iframe>
+
+                    <div className="embed-responsive embed-responsive-16by9">
+                        <iframe className="embed-responsive-item" src={videoId} allowFullScreen></iframe>
+                    </div>
+
 
                     <hr />
 
@@ -70,7 +81,7 @@ class Movie extends React.Component {
                     Jason can be seen in The House, The Lego Batman Movie, How to Be Single, Sleeping with Other People, and is still indeed in The Dictator.</p>
 
                     <p>{film.tagline}</p>
-                    <img src={ `https://image.tmdb.org/t/p/w1400_and_h450_bestv2${film.backdrop_path}` } alt={film.title} />
+                    <img src={ `https://image.tmdb.org/t/p/w1400_and_h450_bestv2${film.backdrop_path}` } alt={film.title} className="img-fluid" />
                 </div>
             </div>
         )
