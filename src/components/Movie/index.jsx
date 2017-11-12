@@ -23,6 +23,7 @@ class Movie extends React.Component {
         const film = this.props.activeFilm.data;
         const poster = film.poster_path;
         const src = poster === null ? 'http://via.placeholder.com/185x278' : `https://image.tmdb.org/t/p/w600_and_h900_bestv2${poster}`;
+        const videoId = `https://www.youtube.com/embed/${film.videos.results[0].key}`;
 
         return(
             <div>
@@ -41,6 +42,23 @@ class Movie extends React.Component {
                     <p>iTunes</p>
                     <p>Amazon</p>
                     <p>Google Play</p>
+
+                    <h1>Credits {film.credits.cast.name}</h1>
+
+                    {film.credits.cast.map((credit) =>
+                        <li>
+                            <img src={ `https://image.tmdb.org/t/p/w138_and_h175_bestv2${credit.profile_path}` } />
+                            <p>{credit.name}</p>
+                            <small>{credit.character}</small>
+                        </li>
+                    )}
+
+                   
+
+                    <h3>Trailer</h3>
+                    <iframe width="560" height="315" src={videoId} frameborder="0" allowFullScreen></iframe>
+
+                    <hr />
 
                     <iframe src="https://art19.com/shows/how-did-this-get-made/episodes/43c86f63-b6e3-4a2d-8641-6073089de0c2/embed?theme=dark-blue" style={{width: "100%", height: "200px", border: "0 none"}} scrolling="no"></iframe>
 

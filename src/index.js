@@ -1,3 +1,5 @@
+import "bootstrap/scss/bootstrap.scss"
+
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
@@ -5,9 +7,6 @@ import { createStore, applyMiddleware } from 'redux';
 import { BrowserRouter, Route, Switch  } from 'react-router-dom';
 import promise from 'redux-promise';
 
-// import 'materialize-css/dist/css/materialize.min.css';
-// import 'materialize-css/dist/js/materialize.min.js'
-import './index.css';
 // import Header from './components/header';
 // import Footer from './components/Footer';
 import Home from './components/Home';
@@ -15,6 +14,9 @@ import Home from './components/Home';
 import Movie from './components/Movie';
 import reducers from './reducers';
 import registerServiceWorker from './registerServiceWorker';
+
+import "./styles/app.scss";
+import "./styles/style.css";
 
 const createStoreWithMiddleware = applyMiddleware(promise)(createStore);
 
