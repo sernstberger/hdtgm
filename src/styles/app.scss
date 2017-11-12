@@ -1,8 +1,11 @@
 @import '../../node_modules/bootstrap/scss/bootstrap.scss';
 
-$primary: #4D559A;
+// $primary: #394373;
+$primary: rgb(59, 68, 133);
 $secdondary: #6AADBA;
 $navbar-height: 56px;
+$font-family-sans-serif: "Roboto", serif;
+$font-family-display: "Kalam", serif;
 
 html, body {
   height: 100%;
@@ -14,6 +17,7 @@ body {
   padding: 0;
   font-family: sans-serif;
   background: #CCC;
+  font-family: $font-family-sans-serif;
 
   &:before {
     border: 10px solid $primary;
@@ -29,6 +33,10 @@ body {
   }
 }
 
+.display-3 {
+  font-family: $font-family-display;
+  font-weight: 700;
+}
 
 
 .movie-bg {
@@ -78,7 +86,7 @@ body {
 }
 
 .main {
-  background-color: rgba(255, 255, 255, 0.3);
+  background-color: rgba(255, 255, 255, 0.5);
   margin-top: ($navbar-height + 10);
   padding: 50px;
   position: relative;
@@ -92,5 +100,10 @@ body {
 
 
 .navbar {
-  @include gradient-x(#4D559A, #6AADBA);
+  @include gradient-x($primary, $secdondary);
+  box-shadow: 0 0 30px rgba(black, .3);
+}
+
+.navbar-brand {
+  font-family: $font-family-display;
 }

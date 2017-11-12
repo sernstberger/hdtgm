@@ -5873,9 +5873,10 @@ body {
   margin: 0;
   padding: 0;
   font-family: sans-serif;
-  background: #CCC; }
+  background: #CCC;
+  font-family: "Roboto", serif; }
   body:before {
-    border: 10px solid #4D559A;
+    border: 10px solid #3b4485;
     bottom: 0;
     content: "";
     left: 0;
@@ -5884,6 +5885,10 @@ body {
     right: 0;
     top: 56px;
     z-index: 1000; }
+
+.display-3 {
+  font-family: "Kalam", serif;
+  font-weight: 700; }
 
 .movie-bg {
   background-color: white;
@@ -5907,7 +5912,7 @@ body {
     top: 56px;
     z-index: 1000; }
   .movie-bg:after {
-    background-image: linear-gradient(to right, rgba(106, 173, 186, 0.9) 0%, #4d559a 100%);
+    background-image: linear-gradient(to right, rgba(106, 173, 186, 0.9) 0%, #3b4485 100%);
     background-repeat: repeat-x;
     bottom: 0;
     content: "";
@@ -5925,7 +5930,7 @@ body {
   z-index: 1; }
 
 .main {
-  background-color: rgba(255, 255, 255, 0.3);
+  background-color: rgba(255, 255, 255, 0.5);
   margin-top: 66px;
   padding: 50px;
   position: relative;
@@ -5935,5 +5940,9 @@ body {
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.5), 0 5px 30px rgba(0, 0, 0, 0.3); }
 
 .navbar {
-  background-image: linear-gradient(to right, #4D559A 0%, #6AADBA 100%);
-  background-repeat: repeat-x; }
+  background-image: linear-gradient(to right, #3b4485 0%, #6AADBA 100%);
+  background-repeat: repeat-x;
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.3); }
+
+.navbar-brand {
+  font-family: "Kalam", serif; }

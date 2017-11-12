@@ -1,15 +1,14 @@
 import axios from 'axios';
 
-
 export const FETCH_POPULAR = 'fetch_popular';
 export const FETCH_MOVIE = 'fetch_movie';
 export const SEARCH = 'search';
+export const FETCH_PERSON = 'fetch_person';
 export const CLEAR_MOVIE = 'clear_movie'
 
 const API_KEY = "0937832cbf3fd4650f903d91d96dec31";
 
 export function fetchPopular() {
-    // This request will pull the popular films from TMD
     const request = axios.get(`https://api.themoviedb.org/3/list/38134?api_key=${API_KEY}`);
     return {
         type: FETCH_POPULAR,
@@ -31,6 +30,14 @@ export function fetchMovie(id) {
     const request = axios.get(`https://api.themoviedb.org/3/movie/${id}?api_key=${API_KEY}&append_to_response=credits,videos,recommendations,release_dates`);
     return {
         type: FETCH_MOVIE,
+        payload: request
+    }
+}
+
+export function fetchPerson(id) {
+    const request = axios.get(`https://api.themoviedb.org/3/person/${id}?api_key=${API_KEY}`);
+    return {
+        type: FETCH_PERSON,
         payload: request
     }
 }
