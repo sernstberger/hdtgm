@@ -1,5 +1,9 @@
 @import '../../node_modules/bootstrap/scss/bootstrap.scss';
 
+$primary: #4D559A;
+$secdondary: #6AADBA;
+$navbar-height: 56px;
+
 html, body {
   height: 100%;
 }
@@ -10,33 +14,83 @@ body {
   padding: 0;
   font-family: sans-serif;
   background: #CCC;
+
+  &:before {
+    border: 10px solid $primary;
+    bottom: 0;
+    content: "";
+    left: 0;
+    // mix-blend-mode: screen;  
+    pointer-events: none;
+    position: fixed;
+    right: 0;
+    top: 56px;
+    z-index: 1000;
+  }
 }
 
 
+
+.movie-bg {
+  background-color: white;
+  background-size: cover;
+  bottom: 0;
+  background-blend-mode: luminosity;
+  // filter: blur(30px);
+  left: 0;
+  position: fixed;
+  right: 0;
+  top: $navbar-height;
+  z-index: 0;
+
+  &:before {
+    @include gradient-x(rgba(white,.5), rgba(white,.75));
+    bottom: 0;
+    content: "";
+    left: 0;
+    mix-blend-mode: multiply;
+    position: fixed;
+    right: 0;
+    top: 56px;
+    z-index: 1000;
+  }
+  &:after {
+    @include gradient-x(rgba($secdondary,.9), rgba($primary,1));
+    bottom: 0;
+    content: "";
+    left: 0;
+    mix-blend-mode: screen;
+    position: fixed;
+    right: 0;
+    top: 56px;
+    z-index: 1001;
+  }
+}
 
 
 .sidebar {
-  background-color: #ddd;
-  float: left;
-  height: 100%;
+  // background-color: #ddd;
+  margin-top: ($navbar-height + 10);
   padding: 20px;
-  width: 300px;
+  position: relative;
+  // width: 300px;
+  z-index: 1;
 }
 
 .main {
-  float: left;
-  width: 900px;
+  background-color: rgba(255, 255, 255, 0.3);
+  margin-top: ($navbar-height + 10);
+  padding: 50px;
+  position: relative;
+  z-index: 1;
 }
 
-
-
-iframe {
-  width: 100%;
+.poster {
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.5), 0 5px 30px rgba(0, 0, 0, 0.3);
 }
 
 
 
 .navbar {
-  // background: red;
   @include gradient-x(#4D559A, #6AADBA);
 }

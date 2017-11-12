@@ -12,9 +12,9 @@ class MovieCard extends React.Component {
             <div className="col-sm-6 col-md-3 col-lg-2">
                 <div className="card">
                     <Link to={ `/movie/${this.props.film.id}` }  >
-                        <img src={ src } alt={movieTitle} className="img-fluid" />
+                        <img src={ src } alt={movieTitle} className="img-fluid poster" />
                     </Link>
-                    <h2>{ movieTitle }</h2>
+                    <h5>{ movieTitle }</h5>
                 </div>
             </div>
         )
