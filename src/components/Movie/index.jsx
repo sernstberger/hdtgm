@@ -30,6 +30,8 @@ class Movie extends React.Component {
 
         const people = this.props.personList.data;
 
+        console.log("something");
+        
         return(
             <div className="container-fluid">
                 <div className="movie-bg" style={{backgroundImage: `url("https://image.tmdb.org/t/p/original${film.backdrop_path}")`}}></div>
@@ -58,7 +60,7 @@ class Movie extends React.Component {
 
                             <h1>Jerks</h1>
 
-                            {people.name}
+                            <p>{people.name}</p>
 
                             <br />
                             <br />
@@ -66,8 +68,6 @@ class Movie extends React.Component {
                             <br />
                             <br />
                             <br />
-
-                            {/* <iframe width="100%" scrolling="no" frameborder="no" src=""></iframe> */}
 
                             <ReactPlayer url="https://soundcloud.com/hdtgm/159-sleepwalkers-w-lauren-lapkus" />
                             
@@ -94,7 +94,7 @@ class Movie extends React.Component {
 
                             <div className="list-group">
                                 {film.credits.cast.slice(0, 10).map((credit) =>
-                                    <div className="list-group-item">
+                                    <div className="list-group-item" key={credit.id}>
                                         <div className="media">
                                             <img src={ `https://image.tmdb.org/t/p/w66_and_h66_bestv2${credit.profile_path}` } className="mr-3" height="40" width="40" />
                                             <div className="media-body align-self-center">
