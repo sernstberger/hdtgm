@@ -2,8 +2,8 @@ import React from "react";
 // import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { fetchMovie, fetchPerson, fetchContentfulMovie } from '../../actions';
-
-import ReactPlayer from "react-player";
+import Markdown from "react-remarkable";
+import Foo from "./foo";
 
 class Movie extends React.Component {
     componentDidMount() {
@@ -65,14 +65,18 @@ class Movie extends React.Component {
                     </div>
                     <div className="col-sm-9">
                         <div className="main">
+                            <Foo />
                             <h3>Episode #{contentfulData.episodeNumber}</h3>
                             <h1 className="display-3">{film.title}</h1>
                             <h2>{film.tagline}</h2>
                             <p>{film.overview}</p>
 
-                            <h1>Jerks</h1>
+                            <hr />
 
+                            {/* <h1>Jerks</h1> */}
                             {/* <p>{people.name}</p> */}
+
+                            <Markdown source={contentfulData.description} />
 
                             <br />
                             <br />
@@ -81,7 +85,7 @@ class Movie extends React.Component {
                             <br />
                             <br />
                             
-                            <ReactPlayer url={contentfulData.soundCloud} />
+                            {/* <ReactPlayer url={contentfulData.soundCloud} /> */}
                             
                             <h3>play progress</h3>
                             {/* <progress max={1} value={played} /> */}
@@ -117,8 +121,6 @@ class Movie extends React.Component {
                                     </div>
                                 )}
                             </div>
-
-                            {contentfulData.description}
 
                         </div>
                     </div>
