@@ -48,3 +48,21 @@ export function clearMovie(){
         payload: null
     }
 }
+
+
+
+
+
+
+
+export const FETCH_CONTENTFUL_MOVIE = 'fetch_contentful_movie';
+const API_BASE_URL = 'https://cdn.contentful.com';
+const API_SPACE_ID = 'eagltwkjkzci';
+const API_TOKEN = 'a0d559b969b73eff6fe9a4d3c0e3e21756b94eb6e984466d3db2ccfe89623170';
+export function fetchContentfulMovie(movie_id) {
+  const request = axios.get(`${API_BASE_URL}/spaces/${API_SPACE_ID}/entries?access_token=${API_TOKEN}&content_type=movie&fields.movieId=${movie_id}`);
+  return {
+    type: FETCH_CONTENTFUL_MOVIE,
+    payload: request
+  };
+}
