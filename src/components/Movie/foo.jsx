@@ -9,6 +9,10 @@ import React, { Component } from 'react'
 import ReactPlayer from "react-player";
 import Duration from './Duration'
 
+
+import Slider from 'react-rangeslider'
+
+
 export default class Foo extends Component {
   state = {
     url: null,
@@ -37,16 +41,22 @@ export default class Foo extends Component {
   onPause = () => {
     this.setState({ playing: false })
   }
-  onSeekMouseDown = e => {
+  handleChangeStart = () => {
     this.setState({ seeking: true })
-  }
-  onSeekChange = e => {
-    this.setState({ played: parseFloat(e.target.value) })
-  }
-  onSeekMouseUp = e => {
+  };
+
+  handleChange = e => {
+    this.setState({
+      played: parseFloat(e)
+    })
+    // console.log(value);
+  };
+
+  handleChangeComplete = e => {
     this.setState({ seeking: false })
-    this.player.seekTo(parseFloat(e.target.value))
-  }
+    this.player.seekTo(parseFloat(this.state.played))
+  };
+
   onProgress = state => {
     // We only want to update time slider if we are not currently seeking
     if (!this.state.seeking) {
@@ -94,29 +104,31 @@ export default class Foo extends Component {
           </div>
             
             <div className="bacon">
+
+            { loaded > 0 ?    <button onClick={this.playPause}>{playing ? 'Pause' : 'Play'}</button>    :       <button onClick={() => this.load(this.props.audioUrl)}>Play Podcast</button>}
+                
+                
+            <div className="slider">
+                <Slider
+                    step={0.000000000000000000001}
+                    min={0}
+                    max={1}
+                    tooltip={false}
+                    value={played}
+                    onChangeStart={this.handleChangeStart}
+                    onChange={this.handleChange}
+                    onChangeComplete={this.handleChangeComplete}
+                />
+            </div>
+
+            
               <div className="progress progress-loaded">
                 <div className="progress-bar" role="progressbar" style={{width: (loaded*100) + "%" }} aria-valuenow={loaded*100} aria-valuemin="0" aria-valuemax="100"></div>
               </div>
               <div className="progress progress-played">
                 <div className="progress-bar bg-warning" role="progressbar" style={{width: (played*100) + "%" }} aria-valuenow={played*100} aria-valuemin="0" aria-valuemax="100"></div>
               </div>
-
-              <td>
-                { loaded > 0 ?    <button onClick={this.playPause}>{playing ? 'Pause' : 'Play'}</button>    :       <button onClick={() => this.load(this.props.audioUrl)}>Play Podcast</button>}
-              </td>
-            <hr />
-              <th>Seek</th>
-              <td>
-                <input
-                  className="seekRange"
-                  type='range' min={0} max={1} step='any'
-                  value={played}
-                  onMouseDown={this.onSeekMouseDown}
-                  onChange={this.onSeekChange}
-                  onMouseUp={this.onSeekMouseUp}
-                />
-              </td>
-            <hr />
+              
               <th>Volume</th>
               <td>
                 <input type='range' min={0} max={1} step='any' value={volume} onChange={this.setVolume} />
