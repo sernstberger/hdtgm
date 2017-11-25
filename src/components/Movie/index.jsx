@@ -65,7 +65,7 @@ class Movie extends React.Component {
                     </div>
                     <div className="col-sm-9">
                         <div className="main">
-                            <Foo />
+                            <Foo audioUrl={contentfulData.soundCloud} />
                             <h3>Episode #{contentfulData.episodeNumber}</h3>
                             <h1 className="display-3">{film.title}</h1>
                             <h2>{film.tagline}</h2>
@@ -86,19 +86,6 @@ class Movie extends React.Component {
                             <br />
                             
                             {/* <ReactPlayer url={contentfulData.soundCloud} /> */}
-                            
-                            <h3>play progress</h3>
-                            {/* <progress max={1} value={played} /> */}
-                            <progress max={1} defaultValue={10} />
-
-
-                            <h3>load progress</h3>
-                            {/* <progress max={1} defaultValue={played} /> */}
-                            <progress max={1} defaultValue={65} />
-
-                            <h3>Volume</h3>
-                            {/* <input type='range' min={0} max={1} step='any' defaultValue={volume} onChange={this.setVolume} /> */}
-                            <input type='range' min={0} max={1} step='any' defaultValue={10} />
 
 
                             {/* <p>Where can you watch?</p>

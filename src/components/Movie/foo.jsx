@@ -101,9 +101,7 @@ export default class Foo extends Component {
           <table><tbody>
             <tr>
               <td>
-                { loaded > 0 ?    <button onClick={this.playPause}>{playing ? 'Pause' : 'Play'}</button>    :       <button onClick={() => this.load("https://soundcloud.com/hdtgm/137-the-avengers-live-w-tom-scharpling")}>
-        things
-      </button>}
+                { loaded > 0 ?    <button onClick={this.playPause}>{playing ? 'Pause' : 'Play'}</button>    :       <button onClick={() => this.load(this.props.audioUrl)}>things</button>}
               </td>
             </tr>
             <tr>
