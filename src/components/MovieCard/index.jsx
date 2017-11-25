@@ -9,7 +9,7 @@ class MovieCard extends React.Component {
         const movieTitle = this.props.film.title;
 
         return (
-            <div className="col-sm-6 col-md-3 col-lg-2">
+            <div className="col-4 col-md-3 col-lg-2">
                 <div className="text-center">
                     <Link to={ `/movie/${this.props.film.id}` }  >
                         <img src={ src } alt={movieTitle} className="img-fluid poster" />

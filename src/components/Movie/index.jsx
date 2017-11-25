@@ -6,13 +6,13 @@ import Markdown from "react-remarkable";
 import Foo from "./foo";
 
 class Movie extends React.Component {
-    componentDidMount() {
-        this.props.fetchMovie(this.props.match.params.id);
+  componentDidMount() {
+    this.props.fetchMovie(this.props.match.params.id);
 
-        this.props.fetchContentfulMovie(this.props.match.params.id);
-        
-        this.props.fetchPerson(111683);
-    }
+    this.props.fetchContentfulMovie(this.props.match.params.id);
+
+    this.props.fetchPerson(111683);
+  }
     
     componentDidUpdate(prevProps) {
         // If this address doesn't match the last address, run the fetchMovie function
@@ -50,38 +50,33 @@ class Movie extends React.Component {
 
                 <div className="main">
                     <div className="row justify-content-center">
-                        <div className="col-sm-3 col-xl-2">
-
-                                <img src={ src } alt={film.title} className="img-fluid poster" />
-
+                        <div className="col-3 col-sm-3">
+                          <img src={ src } alt={film.title} className="img-fluid poster" />
                         </div>
-                        <div className="col-sm-9 col-xl-8">
-                        
-                            <Foo audioUrl={contentfulData.soundCloud} />
-                            <h3>Episode #{contentfulData.episodeNumber}</h3>
-                            <h1 className="display-3">{film.title}</h1>
-                            <h2>{film.tagline}</h2>
-                            <p>{film.overview}</p>
-                            <div className="btn btn-primary">Play</div>
-
-                            <Markdown source={contentfulData.description} />
-
+                        <div className="col-9 col-xl-8">
+                          <Foo audioUrl={contentfulData.soundCloud} />
+                          <h3>Episode #{contentfulData.episodeNumber}</h3>
+                          <h1 className="display-3">{film.title}</h1>
+                          <h2>{film.tagline}</h2>
+                          <div className="btn btn-primary" onClick={  () => document.getElementById('bigPlayBtn').click()  }>Play</div>
+                          <p><a href="#">http://www.slashfilm.com/mackenzie-astin-talks-the-garbage-pail-kids-movie/</a></p>
+                        </div>
+                        <div className="col-12">
+                          <Markdown source={contentfulData.description} />
+                          <hr />
+                          <p>{film.overview}</p>
                         </div>
                         <div className="col-xl-10">
                             <div className="row">
-
                               <div className="col-sm-6">
                                   <h3>Trailer</h3>
-
                                   <div className="embed-responsive embed-responsive-16by9">
-                                      <iframe className="embed-responsive-item" src={videoId} allowFullScreen title="video"></iframe>
+                                    <iframe className="embed-responsive-item" src={videoId} allowFullScreen title="video"></iframe>
                                   </div>
                               </div>
 
-
                               <div className="col-sm-6">
                                   <h3>Credits {film.credits.cast.name}</h3>
-
                                   <div className="list-group">
                                       {film.credits.cast.slice(0, 10).map((credit) =>
                                           <div className="list-group-item" key={credit.id}>

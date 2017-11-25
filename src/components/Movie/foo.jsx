@@ -93,15 +93,20 @@ export default class Foo extends Component {
             onDuration={duration => this.setState({ duration })}
           />
         </div>
-        <div className="bacon">
-
-            { loaded > 0 ?    <button onClick={this.playPause}>{playing ? 'Pause' : 'Play'}</button>    :       <button onClick={() => this.load(this.props.audioUrl)}>Play Podcast</button>}
-            
+        <div className="bacon" style={{bottom: loaded > 0 ? 0 : -100 }}>
+            {/* { loaded < 0 && "yeah" } */}
             <div className="row">
-              <div className="col text-right">
-                  <Duration seconds={duration * played} />
+              <div className="col-2 text-right">
+                { loaded > 0 ?    
+                  <div className="play-btn" onClick={this.playPause}>{playing ? <i className="material-icons">pause_circle_filled</i> : <i className="material-icons">play_circle_filled</i>}</div>    :       
+                  <div className="play-btn" id="bigPlayBtn" onClick={() => this.load(this.props.audioUrl)}><i className="material-icons">play_circle_filled</i></div>
+                }
               </div>
-              <div className="col">
+              <div className="col-1 text-right">
+                <Duration seconds={duration * played} className="time-counter"/>
+              </div>
+              <div className="col-6">
+                <div className="bacon-bit">
                   <div className="slider">
                     <Slider
                       step={0.000000000000000000001}
@@ -121,19 +126,19 @@ export default class Foo extends Component {
                   <div className="progress progress-played">
                       <div className="progress-bar" role="progressbar" style={{width: (played*100) + "%" }} aria-valuenow={played*100} aria-valuemin="0" aria-valuemax="100"></div>
                   </div>
+                </div>
                   
               </div>
-              <div className="col">
-                  <Duration seconds={duration * (1 - played)} />
+              <div className="col-1">
+                  {/* <Duration seconds={duration * (1 - played)} /> */}
+                  <Duration seconds={duration} className="time-counter" />
+              </div>
+              <div className="col-2">
+                <div className="volume">
+                  <input type='range' min={0} max={1} step='any' value={volume} onChange={this.setVolume} />
+                </div>
               </div>
             </div>
-
-            <Duration seconds={duration} />
-          
-            <div className="volume">
-                <input type='range' min={0} max={1} step='any' value={volume} onChange={this.setVolume} />
-            </div>
-
         </div>
       </div>
     )

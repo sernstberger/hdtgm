@@ -14,9 +14,22 @@ class Home extends React.Component {
         // Ajax Spinner for loading
         if(this.props.results.data === undefined) return <div>Loading... </div>
 
-        return this.props.results.data.map(
-            film =>
-                <MovieCard key={film.id} film={film} />
+        const films = this.props.results.data;
+        // films.sort(function(a, b) {
+        //   var textA = a.title.toUpperCase();
+        //   var textB = b.title.toUpperCase();
+        //   return (textA < textB) ? -1 : (textA > textB) ? 1 : 0;
+        // });
+
+        films.sort((a,b) => {
+          return new Date(a.release_date).getTime() - 
+              new Date(b.release_date).getTime()
+        }).reverse();
+        console.log(films);
+
+        return films.map(
+          film =>
+            <MovieCard key={film.id} film={film} />
         );        
     }
     
@@ -36,40 +49,10 @@ class Home extends React.Component {
 
 
 
-                <table class="wikitable plainrowheaders">
+<table className="wikitable plainrowheaders">
 <tbody>
 <tr>
-<td>"<i><a href="/wiki/Season_of_the_Witch_(2011_film)" title="Season of the Witch (2011 film)">Season of the Witch</a></i>"</td>
-</tr>
-<tr>
-<td>"<i><a href="/wiki/The_Last_Airbender" title="The Last Airbender">The Last Airbender</a></i>"</td>
-</tr>
-<tr>
-<td>"<i><a href="/wiki/Battlefield_Earth_(film)" title="Battlefield Earth (film)">Battlefield Earth</a></i>"</td>
-</tr>
-<tr>
-<td>"<i><a href="/wiki/All_About_Steve" title="All About Steve">All About Steve</a></i>"</td>
-</tr>
-<tr>
-<td>"<i><a href="/wiki/Sucker_Punch_(2011_film)" title="Sucker Punch (2011 film)">Sucker Punch</a></i>"</td>
-</tr>
-<tr>
-<td>"<i><a href="/wiki/Fast_Five" title="Fast Five">Fast Five</a></i>"</td>
-</tr>
-<tr>
-<td>"<i><a href="/wiki/Mac_and_Me" title="Mac and Me">Mac and Me</a></i>"</td>
-</tr>
-<tr>
-<td>"<i><a href="/wiki/Crank:_High_Voltage" title="Crank: High Voltage">Crank: High Voltage</a></i>"</td>
-</tr>
-<tr>
-<td>"<i><a href="/wiki/The_Back-up_Plan" title="The Back-up Plan">The Back-up Plan</a></i>"</td>
-</tr>
-<tr>
 <td>"<i><a href="/wiki/Skyline_(2010_film)" title="Skyline (2010 film)">Skyline</a></i>"</td>
-</tr>
-<tr>
-<td>"<i><a href="/wiki/The_Wicker_Man_(2006_film)" title="The Wicker Man (2006 film)">The Wicker Man</a></i>"</td>
 </tr>
 <tr>
 <td>"<i><a href="/wiki/I_Know_Who_Killed_Me" title="I Know Who Killed Me">I Know Who Killed Me</a></i>"</td>
@@ -136,9 +119,6 @@ class Home extends React.Component {
 <td>"<i><a href="/wiki/Judge_Dredd_(film)" title="Judge Dredd (film)">Judge Dredd</a></i>"</td>
 </tr>
 <tr>
-<td>"<i><a href="/wiki/Spider-Man_3" title="Spider-Man 3">Spider-Man 3</a></i>"</td>
-</tr>
-<tr>
 <td>"<i><a href="/wiki/Batman_%26_Robin_(film)" title="Batman &amp; Robin (film)">Batman &amp; Robin</a></i>"</td>
 <td><small><span title="Not available">N/A</span></small></td>
 </tr>
@@ -195,9 +175,6 @@ class Home extends React.Component {
 <td>"<i><a href="/wiki/Street_Fighter_(1994_film)" title="Street Fighter (1994 film)">Street Fighter</a></i>"</td>
 </tr>
 <tr>
-<td>"<i><a href="/wiki/Stop!_Or_My_Mom_Will_Shoot" title="Stop! Or My Mom Will Shoot">Stop! Or My Mom Will Shoot</a></i>"</td>
-</tr>
-<tr>
 <td>"<i><a href="/wiki/Joyful_Noise_(film)" title="Joyful Noise (film)">Joyful Noise</a></i>"</td>
 </tr>
 <tr>
@@ -207,9 +184,6 @@ class Home extends React.Component {
 <td>"<i><a href="/wiki/After_Earth" title="After Earth">After Earth</a></i>"</td>
 </tr>
 <tr>
-<td>"<i><a href="/wiki/Howard_the_Duck_(film)" title="Howard the Duck (film)">Howard the Duck</a></i>"</td>
-</tr>
-<tr>
 <td>"<i><a href="/wiki/Demolition_Man_(film)" title="Demolition Man (film)">Demolition Man</a></i>"</td>
 </tr>
 <tr>
@@ -217,10 +191,6 @@ class Home extends React.Component {
 </tr>
 <tr>
 <td>"<i><a href="/wiki/Over_the_Top_(film)" title="Over the Top (film)">Over The Top</a></i>"</td>
-</tr>
-<tr>
-<td>"<i><a href="/wiki/Crocodile_Dundee_in_Los_Angeles" title="Crocodile Dundee in Los Angeles">Crocodile Dundee in Los Angeles</a></i>"</td>
-<td><small><span title="Not available">N/A</span></small></td>
 </tr>
 <tr>
 <td>"<i><a href="/wiki/Gymkata" title="Gymkata">Gymkata</a></i>"</td>
@@ -303,7 +273,7 @@ class Home extends React.Component {
 </tr>
 <tr>
 <td>"<i><a href="/wiki/A_View_to_a_Kill" title="A View to a Kill">A View to a Kill</a></i>"</td>
-<td>Live episode. Crossover with the <i>James Bonding</i> podcast<sup id="cite_ref-6" class="reference"><a href="#cite_note-6">[6]</a></sup></td>
+<td>Live episode. Crossover with the <i>James Bonding</i> podcast<sup id="cite_ref-6" className="reference"><a href="#cite_note-6">[6]</a></sup></td>
 </tr>
 <tr>
 <td>"<i><a href="/wiki/Junior_(1994_film)" title="Junior (1994 film)">Junior</a></i>"</td>
@@ -379,9 +349,6 @@ class Home extends React.Component {
 <td>"<i><a href="/wiki/Lifeforce_(film)" title="Lifeforce (film)">Lifeforce</a></i>"</td>
 </tr>
 <tr>
-<td>"<i><a href="/wiki/Hackers_(film)" title="Hackers (film)">Hackers</a></i>"</td>
-</tr>
-<tr>
 <td>"<i><a href="/wiki/Steel_(1997_film)" title="Steel (1997 film)">Steel</a></i>"</td>
 </tr>
 <tr>
@@ -422,13 +389,6 @@ class Home extends React.Component {
 <td>Live episode</td>
 </tr>
 <tr>
-<td>"A Conversation with Mel Brooks"</td>
-<td>Mel Brooks discusses <i><a href="/wiki/Solarbabies" title="Solarbabies">Solarbabies</a></i></td>
-</tr>
-<tr>
-<td>"<i><a href="/wiki/The_Avengers_(1998_film)" title="The Avengers (1998 film)">The Avengers</a></i>"</td>
-</tr>
-<tr>
 <td>"<i><a href="/wiki/The_Boy_Next_Door_(film)" title="The Boy Next Door (film)">The Boy Next Door</a></i>"</td>
 <td><small><span title="Not available">N/A</span></small></td>
 </tr>
@@ -444,10 +404,6 @@ class Home extends React.Component {
 <tr>
 <td>"<i><a href="/wiki/The_Phantom_(1996_film)" title="The Phantom (1996 film)">The Phantom</a></i>"</td>
 <td>Live episode</td>
-</tr>
-<tr>
-<td>"<i><a href="/wiki/Gods_of_Egypt_(film)" title="Gods of Egypt (film)">Gods of Egypt</a></i>"</td>
-<td><small><span title="Not available">N/A</span></small></td>
 </tr>
 <tr>
 <td>"<i><a href="/wiki/Stealth_(film)" title="Stealth (film)">Stealth</a></i>"</td>
@@ -479,9 +435,6 @@ class Home extends React.Component {
 <td>Live episode</td>
 </tr>
 <tr>
-<td>"Paywall Special Announcement"</td>
-</tr>
-<tr>
 <td>"<i><a href="/wiki/Highlander_II:_The_Quickening" title="Highlander II: The Quickening">Highlander II: The Quickening</a></i>"</td>
 </tr>
 <tr>
@@ -508,44 +461,6 @@ class Home extends React.Component {
 </tr>
 <tr>
 <td>"<i><a href="/wiki/The_Fate_of_the_Furious" title="The Fate of the Furious">The Fate of the Furious</a></i>"</td>
-</tr>
-<tr>
-<td>"<i><a href="/wiki/My_Stepmother_Is_an_Alien" title="My Stepmother Is an Alien">My Stepmother Is an Alien</a></i>"</td>
-</tr>
-<tr>
-<td>"<i><a href="/wiki/The_Running_Man_(1987_film)" title="The Running Man (1987 film)">The Running Man</a></i>"</td>
-</tr>
-<tr>
-<td>"<i><a href="/wiki/Ninja_Terminator" title="Ninja Terminator">Ninja Terminator</a></i>"</td>
-<td>Live episode</td>
-</tr>
-<tr>
-<td>"<i><a href="/wiki/Timecop" title="Timecop">Timecop</a></i>"</td>
-</tr>
-<tr>
-<td>"<i><a href="/wiki/Hard_Ticket_to_Hawaii" title="Hard Ticket to Hawaii">Hard Ticket to Hawaii</a></i>"</td>
-<td>Live episode</td>
-</tr>
-<tr>
-<td>"<i><a href="/wiki/The_Garbage_Pail_Kids_Movie" title="The Garbage Pail Kids Movie">The Garbage Pail Kids Movie</a></i>"</td>
-</tr>
-<tr>
-<td>"<i><a href="/wiki/Bratz_(2007_film)" title="Bratz (2007 film)">Bratz</a></i>"</td>
-</tr>
-<tr>
-<td>"<i><a href="/wiki/The_Last_Dragon" title="The Last Dragon">The Last Dragon</a></i>"</td>
-</tr>
-<tr>
-<td>"<i><a href="/wiki/Virtuosity" title="Virtuosity">Virtuosity</a></i>"</td>
-<td>Live episode</td>
-</tr>
-<tr>
-<td>"<i><a href="/wiki/Jason_X" title="Jason X">Jason X</a></i>"</td>
-<td>Live episode</td>
-</tr>
-<tr>
-<td>"<i><a href="/wiki/Ultraviolet_(film)" title="Ultraviolet (film)">Ultraviolet</a></i>"</td>
-<td>Live episode</td>
 </tr>
 </tbody></table>
 

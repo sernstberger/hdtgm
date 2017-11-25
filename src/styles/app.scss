@@ -1,11 +1,17 @@
-@import '../../node_modules/bootstrap/scss/bootstrap.scss';
+@import 'bootstrap/scss/bootstrap.scss';
+// @import 'bootstrap/scss/variables.scss';
+
+
+// background-image: linear-gradient(to top, #0250c5 0%, #d43f8d 100%);
 
 // $primary: #394373;
-$primary: rgb(59, 68, 133);
-$secondary: #6AADBA;
+$primary: #512DA8;
+$secondary: #1976D2;
 $navbar-height: 56px;
 $font-family-sans-serif: "Roboto", serif;
 $font-family-display: "Kalam", serif;
+$link-color: $primary;
+$body-border-width: 5px;
 
 html, body {
   height: 100%;
@@ -18,23 +24,32 @@ body {
   background: #CCC;
   font-family: $font-family-sans-serif;
 
-  &:before {
-    border: 10px solid $primary;
-    bottom: 0;
-    content: "";
-    left: 0;
-    // mix-blend-mode: screen;  
-    pointer-events: none;
-    position: fixed;
-    right: 0;
-    top: 56px;
-    z-index: 1000;
+  @include media-breakpoint-up(sm) {
+    &:before {
+      border: $body-border-width solid $primary;
+      bottom: 0;
+      content: "";
+      left: 0;
+      // mix-blend-mode: screen;  
+      pointer-events: none;
+      position: fixed;
+      right: 0;
+      top: 56px;
+      z-index: 1000;
+    }
   }
+}
+a {
+  color: $link-color;
 }
 
 .display-3 {
   font-family: $font-family-display;
   font-weight: 700;
+
+  @include media-breakpoint-down(xs) {
+    font-size: 1.5rem;
+  }
 }
 
 
@@ -75,11 +90,29 @@ body {
 }
 
 .main {
-  background-color: rgba(255, 255, 255, 0.5);
-  margin-top: ($navbar-height + 10);
-  padding: 50px 50px 150px;
+  background-color: rgba(255, 255, 255, 0.7);
+  margin-left: -15px;
+  margin-right: -15px;
+  margin-top: $navbar-height;
+  padding: 20px 20px 150px;
   position: relative;
   z-index: 1;
+
+  @include media-breakpoint-up(sm) {
+    margin-top: ($navbar-height + 10);
+    padding: 50px 50px 150px;
+  }
+  @include media-breakpoint-up(lg) {
+    margin-left: 100px;
+    margin-right: 100px;
+  }
+  @include media-breakpoint-up(xl) {
+    margin-left: 15%;
+    margin-right: 15%;
+  }
+  p {
+    text-shadow: 0 0 5px #fff;
+  }
 }
 
 .poster {
@@ -107,20 +140,41 @@ body {
 
 
 .bacon {
-  background-color: #303560;
-  bottom: 10px;
+  background-color: #000;
+  // fd8c2b
+  bottom: 0;
   color: #fff;
-  height: 100px;
-  left: 10px;
-  padding: 10px;
+  height: 90px;
+  left: 0;
+  padding: 20px 10px;
   position: fixed;
-  right: 10px;
+  right: 0;
+  transition: 250ms bottom;
   z-index: 2001;
+
+  @include media-breakpoint-up(sm) {
+    bottom: $body-border-width;
+    left: $body-border-width;
+    right: $body-border-width;
+  }
 }
 
 .progress {
   background: none;
   height: 8px;
+}
+
+.bacon-bit {
+  height: 50px;
+  margin-top: 20px;
+  position: relative;
+  width: 100%;
+}
+.time-counter {
+  display: block;
+  opacity: .75;
+  margin-top: 14px;
+  font-size: .8rem;
 }
 
 
@@ -138,13 +192,27 @@ body {
 }
 .progress-played {
   .progress-bar {
-    background: $secondary;
+    background: #f72a88;
   }
 }
-.volume {
-  position: absolute;
-  top: 60px;
-  right: 40px;
+// .volume {
+//   position: absolute;
+//   top: 60px;
+//   right: 40px;
+// }
+
+.play-btn {
+  cursor: pointer;
+  i {
+    font-size: 3rem;
+    opacity: .8;
+    transition: 250ms all;
+  }
+  &:hover {
+    i {
+      opacity: 1;
+    }
+  }
 }
 
 
@@ -176,11 +244,15 @@ body {
   // box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.4);
 }
 .rangeslider .rangeslider__handle {
-  background: $secondary;
+  background: #f72a88;
   cursor: pointer;
   display: inline-block;
   position: absolute;
   box-shadow: none;
+
+  &:focus {
+    outline: none;
+  }
 }
 .rangeslider .rangeslider__handle .rangeslider__active {
   opacity: 1;
