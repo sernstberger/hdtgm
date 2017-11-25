@@ -86,28 +86,29 @@ export default class Foo extends Component {
               playing={playing}
               volume={volume}
               soundcloudConfig={soundcloudConfig}
-              onReady={() => console.log('onReady')}
-              onStart={() => console.log('onStart')}
               onPlay={this.onPlay}
               onPause={this.onPause}
-              onBuffer={() => console.log('onBuffer')}
-              onSeek={e => console.log('onSeek', e)}
-              onError={e => console.log('onError', e)}
               onProgress={this.onProgress}
               onDuration={duration => this.setState({ duration })}
             />
           </div>
             
-          <table><tbody>
-            <tr>
+            <div className="bacon">
+              <div className="progress progress-loaded">
+                <div className="progress-bar" role="progressbar" style={{width: (loaded*100) + "%" }} aria-valuenow={loaded*100} aria-valuemin="0" aria-valuemax="100"></div>
+              </div>
+              <div className="progress progress-played">
+                <div className="progress-bar bg-warning" role="progressbar" style={{width: (played*100) + "%" }} aria-valuenow={played*100} aria-valuemin="0" aria-valuemax="100"></div>
+              </div>
+
               <td>
-                { loaded > 0 ?    <button onClick={this.playPause}>{playing ? 'Pause' : 'Play'}</button>    :       <button onClick={() => this.load(this.props.audioUrl)}>things</button>}
+                { loaded > 0 ?    <button onClick={this.playPause}>{playing ? 'Pause' : 'Play'}</button>    :       <button onClick={() => this.load(this.props.audioUrl)}>Play Podcast</button>}
               </td>
-            </tr>
-            <tr>
+            <hr />
               <th>Seek</th>
               <td>
                 <input
+                  className="seekRange"
                   type='range' min={0} max={1} step='any'
                   value={played}
                   onMouseDown={this.onSeekMouseDown}
@@ -115,22 +116,14 @@ export default class Foo extends Component {
                   onMouseUp={this.onSeekMouseUp}
                 />
               </td>
-            </tr>
-            <tr>
+            <hr />
               <th>Volume</th>
               <td>
                 <input type='range' min={0} max={1} step='any' value={volume} onChange={this.setVolume} />
               </td>
-            </tr>
-            <tr>
-              <th>Played</th>
-              <td><progress max={1} value={played} /></td>
-            </tr>
-            <tr>
-              <th>Loaded</th>
-              <td><progress max={1} value={loaded} /></td>
-            </tr>
-          </tbody></table>
+
+            </div>
+
         </section>
         <section className='section'>
 
