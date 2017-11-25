@@ -12,6 +12,8 @@ class Movie extends React.Component {
     this.props.fetchContentfulMovie(this.props.match.params.id);
 
     this.props.fetchPerson(111683);
+
+    window.scrollTo(0, 0)
   }
     
     componentDidUpdate(prevProps) {
@@ -39,9 +41,6 @@ class Movie extends React.Component {
 
         const people = this.props.personList.data;
         console.log(people);
-        const contentfulData = this.props.activeContentfulFilm.data.items[0].fields;
-
-        console.log(contentfulData);
         console.log(film);
 
         return(
@@ -50,33 +49,58 @@ class Movie extends React.Component {
 
                 <div className="main">
                     <div className="row justify-content-center">
-                        <div className="col-3 col-sm-3">
+
+                        <div className="col-3 col-xl-4">
                           <img src={ src } alt={film.title} className="img-fluid poster" />
+
+                          { window.innerWidth < 768 && this.props.activeContentfulFilm.data.items[0] !== undefined && 
+                            <div className="btn btn-primary btn-block btn-sm mt-2" onClick={  () => document.getElementById('bigPlayBtn').click()  }><i className="material-icons">play_arrow</i> Play</div>
+                          }
                         </div>
                         <div className="col-9 col-xl-8">
-                          <Foo audioUrl={contentfulData.soundCloud} />
-                          <h3>Episode #{contentfulData.episodeNumber}</h3>
+                          { this.props.activeContentfulFilm.data.items[0] &&
+                            <Foo audioUrl={this.props.activeContentfulFilm.data.items[0].fields.soundCloud} />
+                          }
+                          { this.props.activeContentfulFilm.data.items[0] !== undefined && 
+                            <h5 className="text-uppercase">Episode #{this.props.activeContentfulFilm.data.items[0].fields.episodeNumber}</h5>
+                          }
                           <h1 className="display-3">{film.title}</h1>
-                          <h2>{film.tagline}</h2>
-                          <div className="btn btn-primary" onClick={  () => document.getElementById('bigPlayBtn').click()  }>Play</div>
+                          <h3>{film.tagline}</h3>
+                          { window.innerWidth > 767 && this.props.activeContentfulFilm.data.items[0] !== undefined && 
+                            <div className="btn btn-primary btn-lg mt-2" onClick={  () => document.getElementById('bigPlayBtn').click()  }><i className="material-icons">play_arrow</i> Play</div>
+                          }
+                          { window.innerWidth > 1200 && this.props.activeContentfulFilm.data.items[0] !== undefined && 
+                            <div className="mt-3">
+                              <Markdown source={this.props.activeContentfulFilm.data.items[0].fields.description}/>
+                            </div>
+                          }
+                        </div>
+                        <div className="col-12">
+                          { window.innerWidth < 1200 && this.props.activeContentfulFilm.data.items[0] !== undefined && 
+                            <div className="mt-3">
+                              <Markdown source={this.props.activeContentfulFilm.data.items[0].fields.description} />
+                            </div>
+                          }
+                          <hr />
+                          <h6 className="text-uppercase">Plot overview</h6>
+                          <p>{film.overview}</p>
+
                           <p><a href="#">http://www.slashfilm.com/mackenzie-astin-talks-the-garbage-pail-kids-movie/</a></p>
                         </div>
                         <div className="col-12">
-                          <Markdown source={contentfulData.description} />
-                          <hr />
-                          <p>{film.overview}</p>
-                        </div>
-                        <div className="col-xl-10">
                             <div className="row">
+                              <div className="col-12">
+                                <hr />
+                              </div>
                               <div className="col-sm-6">
-                                  <h3>Trailer</h3>
+                                  <h6 className="text-uppercase">Trailer</h6>
                                   <div className="embed-responsive embed-responsive-16by9">
                                     <iframe className="embed-responsive-item" src={videoId} allowFullScreen title="video"></iframe>
                                   </div>
                               </div>
 
                               <div className="col-sm-6">
-                                  <h3>Credits {film.credits.cast.name}</h3>
+                                  <h6 className="text-uppercase">Credits {film.credits.cast.name}</h6>
                                   <div className="list-group">
                                       {film.credits.cast.slice(0, 10).map((credit) =>
                                           <div className="list-group-item" key={credit.id}>

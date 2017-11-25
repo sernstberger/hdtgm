@@ -6,8 +6,8 @@ import MovieCard from '../MovieCard';
 
 class Home extends React.Component {
     componentDidMount() {
-        // Once the component has mounted fire the fetchPopular Action
         this.props.fetchPopular();
+        window.scrollTo(0, 0)
     }
     
     renderPopular() {
@@ -36,7 +36,13 @@ class Home extends React.Component {
     render() {
         return (
             <div className="container">
+              <br/>
+              <br/>
+              <br/>
+              <br/>
                 <h1>Movies</h1>
+                <input placeholder="search" />
+                <p>filters</p>
                 <div className="row">
                     { this.renderPopular() }
                 </div>
@@ -72,9 +78,6 @@ class Home extends React.Component {
 </tr>
 <tr>
 <td>"<i><a href="/wiki/Jingle_All_the_Way" title="Jingle All the Way">Jingle All the Way</a></i>"</td>
-</tr>
-<tr>
-<td>"<i><a href="/wiki/The_Twilight_Saga:_Breaking_Dawn_%E2%80%93_Part_1" title="The Twilight Saga: Breaking Dawn – Part 1">The Twilight Saga: Breaking Dawn – Part 1</a></i>"</td>
 </tr>
 <tr>
 <td>"<i><a href="/wiki/Crank_(film)" title="Crank (film)">Crank</a>: Director's Edition</i>"</td>
@@ -145,9 +148,6 @@ class Home extends React.Component {
 <td>Live episode</td>
 </tr>
 <tr>
-<td>"<i><a href="/wiki/The_Twilight_Saga:_Breaking_Dawn_%E2%80%93_Part_2" title="The Twilight Saga: Breaking Dawn – Part 2">The Twilight Saga: Breaking Dawn&nbsp;– Part 2</a></i>"</td>
-</tr>
-<tr>
 <td>"<i><a href="/wiki/Liz_%26_Dick" title="Liz &amp; Dick">Liz &amp; Dick</a></i>"</td>
 </tr>
 <tr>
@@ -164,9 +164,6 @@ class Home extends React.Component {
 </tr>
 <tr>
 <td>"<i><a href="/wiki/Nothing_but_Trouble_(1991_film)" title="Nothing but Trouble (1991 film)">Nothing But Trouble</a></i>"</td>
-</tr>
-<tr>
-<td>"<i><a href="/wiki/From_Justin_to_Kelly" title="From Justin to Kelly">From Justin to Kelly</a></i>"</td>
 </tr>
 <tr>
 <td>"<i><a href="/wiki/In_the_Name_of_the_King" title="In the Name of the King">In the Name of the King</a></i>"</td>
@@ -431,10 +428,6 @@ class Home extends React.Component {
 <td>"<i><a href="/wiki/Grease_2" title="Grease 2">Grease 2</a></i>"</td>
 </tr>
 <tr>
-<td>"<i><a href="/wiki/Escape_from_L.A." title="Escape from L.A.">Escape from L.A.</a></i>"</td>
-<td>Live episode</td>
-</tr>
-<tr>
 <td>"<i><a href="/wiki/Highlander_II:_The_Quickening" title="Highlander II: The Quickening">Highlander II: The Quickening</a></i>"</td>
 </tr>
 <tr>
@@ -442,21 +435,7 @@ class Home extends React.Component {
 <td>Live episode</td>
 </tr>
 <tr>
-<td>"<i><a href="/wiki/XXx:_Return_of_Xander_Cage" title="XXx: Return of Xander Cage">xXx: Return of Xander Cage</a></i>"</td>
-</tr>
-<tr>
-<td>"<i><a href="/wiki/Surf_Ninjas" title="Surf Ninjas">Surf Ninjas</a></i>"</td>
-<td>Live episode</td>
-</tr>
-<tr>
 <td>"<i><a href="/wiki/Body_Parts_(film)" title="Body Parts (film)">Body Parts</a></i>"</td>
-<td>Live episode</td>
-</tr>
-<tr>
-<td>"<i><a href="/wiki/Sleepwalkers_(film)" title="Sleepwalkers (film)">Sleepwalkers</a></i>"</td>
-</tr>
-<tr>
-<td>"<i><a href="/wiki/The_Lake_House_(film)" title="The Lake House (film)">The Lake House</a></i>"</td>
 <td>Live episode</td>
 </tr>
 <tr>
