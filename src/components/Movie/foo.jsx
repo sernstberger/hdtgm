@@ -1,17 +1,9 @@
 import React, { Component } from 'react'
 
-// import './reset.scss'
-// import './defaults.scss'
-// import './App.scss'
-// import './Range.scss'
-
-// import { version } from '../../package.json'
 import ReactPlayer from "react-player";
 import Duration from './Duration'
 
-
 import Slider from 'react-rangeslider'
-
 
 export default class Foo extends Component {
   state = {
@@ -85,75 +77,64 @@ export default class Foo extends Component {
 
     return (
       <div className='app'>
-        <section className='section'>
-          <div className='player-wrapper'>
-            <ReactPlayer
-              ref={this.ref}
-              className='react-player'
-              width='100%'
-              height='100%'
-              url={url}
-              playing={playing}
-              volume={volume}
-              soundcloudConfig={soundcloudConfig}
-              onPlay={this.onPlay}
-              onPause={this.onPause}
-              onProgress={this.onProgress}
-              onDuration={duration => this.setState({ duration })}
-            />
-          </div>
-            
-            <div className="bacon">
+        <div className='player-wrapper'>
+          <ReactPlayer
+            ref={this.ref}
+            className='react-player'
+            width='100%'
+            height='100%'
+            url={url}
+            playing={playing}
+            volume={volume}
+            soundcloudConfig={soundcloudConfig}
+            onPlay={this.onPlay}
+            onPause={this.onPause}
+            onProgress={this.onProgress}
+            onDuration={duration => this.setState({ duration })}
+          />
+        </div>
+        <div className="bacon">
 
             { loaded > 0 ?    <button onClick={this.playPause}>{playing ? 'Pause' : 'Play'}</button>    :       <button onClick={() => this.load(this.props.audioUrl)}>Play Podcast</button>}
-                
-                
-            <div className="slider">
-                <Slider
-                    step={0.000000000000000000001}
-                    min={0}
-                    max={1}
-                    tooltip={false}
-                    value={played}
-                    onChangeStart={this.handleChangeStart}
-                    onChange={this.handleChange}
-                    onChangeComplete={this.handleChangeComplete}
-                />
-            </div>
-
             
-              <div className="progress progress-loaded">
-                <div className="progress-bar" role="progressbar" style={{width: (loaded*100) + "%" }} aria-valuenow={loaded*100} aria-valuemin="0" aria-valuemax="100"></div>
+            <div className="row">
+              <div className="col text-right">
+                  <Duration seconds={duration * played} />
               </div>
-              <div className="progress progress-played">
-                <div className="progress-bar bg-warning" role="progressbar" style={{width: (played*100) + "%" }} aria-valuenow={played*100} aria-valuemin="0" aria-valuemax="100"></div>
-              </div>
-              
-              <th>Volume</th>
-              <td>
-                <input type='range' min={0} max={1} step='any' value={volume} onChange={this.setVolume} />
-              </td>
+              <div className="col">
+                  <div className="slider">
+                    <Slider
+                      step={0.000000000000000000001}
+                      min={0}
+                      max={1}
+                      tooltip={false}
+                      value={played}
+                      onChangeStart={this.handleChangeStart}
+                      onChange={this.handleChange}
+                      onChangeComplete={this.handleChangeComplete}
+                    />
+                  </div>
 
+                  <div className="progress progress-loaded">
+                      <div className="progress-bar" role="progressbar" style={{width: (loaded*100) + "%" }} aria-valuenow={loaded*100} aria-valuemin="0" aria-valuemax="100"></div>
+                  </div>
+                  <div className="progress progress-played">
+                      <div className="progress-bar" role="progressbar" style={{width: (played*100) + "%" }} aria-valuenow={played*100} aria-valuemin="0" aria-valuemax="100"></div>
+                  </div>
+                  
+              </div>
+              <div className="col">
+                  <Duration seconds={duration * (1 - played)} />
+              </div>
             </div>
 
-        </section>
-        <section className='section'>
+            <Duration seconds={duration} />
+          
+            <div className="volume">
+                <input type='range' min={0} max={1} step='any' value={volume} onChange={this.setVolume} />
+            </div>
 
-          <table><tbody>
-            <tr>
-              <th>duration</th>
-              <td><Duration seconds={duration} /></td>
-            </tr>
-            <tr>
-              <th>elapsed</th>
-              <td><Duration seconds={duration * played} /></td>
-            </tr>
-            <tr>
-              <th>remaining</th>
-              <td><Duration seconds={duration * (1 - played)} /></td>
-            </tr>
-          </tbody></table>
-        </section>
+        </div>
       </div>
     )
   }

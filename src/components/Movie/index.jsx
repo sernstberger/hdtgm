@@ -48,67 +48,55 @@ class Movie extends React.Component {
             <div className="container-fluid">
                 <div className="movie-bg" style={{backgroundImage: `url("https://image.tmdb.org/t/p/original${film.backdrop_path}")`}}></div>
 
-                <div className="row">
-                    <div className="col-sm-3">
-                        <div className="sidebar">
+                <div className="main">
+                    <div className="row justify-content-center">
+                        <div className="col-sm-3 col-xl-2">
 
-                            <img src={ src } alt={film.title} className="img-fluid poster" />
+                                <img src={ src } alt={film.title} className="img-fluid poster" />
 
-                            <button className="btn">Watch Trailer</button>
-
-                            <h3>Trailer</h3>
-
-                            <div className="embed-responsive embed-responsive-16by9">
-                                <iframe className="embed-responsive-item" src={videoId} allowFullScreen title="video"></iframe>
-                            </div>
                         </div>
-                    </div>
-                    <div className="col-sm-9">
-                        <div className="main">
+                        <div className="col-sm-9 col-xl-8">
+                        
                             <Foo audioUrl={contentfulData.soundCloud} />
                             <h3>Episode #{contentfulData.episodeNumber}</h3>
                             <h1 className="display-3">{film.title}</h1>
                             <h2>{film.tagline}</h2>
                             <p>{film.overview}</p>
-
-                            <hr />
-
-                            {/* <h1>Jerks</h1> */}
-                            {/* <p>{people.name}</p> */}
+                            <div className="btn btn-primary">Play</div>
 
                             <Markdown source={contentfulData.description} />
 
-                            <br />
-                            <br />
-                            <br />
-                            <br />
-                            <br />
-                            <br />
-                            
-                            {/* <ReactPlayer url={contentfulData.soundCloud} /> */}
+                        </div>
+                        <div className="col-xl-10">
+                            <div className="row">
+                                <div className="col-sm-6">
+                                    <button className="btn">Watch Trailer</button>
 
+                                    <h3>Trailer</h3>
 
-                            {/* <p>Where can you watch?</p>
-                            <p>iTunes</p>
-                            <p>Amazon</p>
-                            <p>Google Play</p> */}
-
-                            <h1>Credits {film.credits.cast.name}</h1>
-
-                            <div className="list-group">
-                                {film.credits.cast.slice(0, 10).map((credit) =>
-                                    <div className="list-group-item" key={credit.id}>
-                                        <div className="media">
-                                            <img src={ `https://image.tmdb.org/t/p/w66_and_h66_bestv2${credit.profile_path}` } alt="goodalt" className="mr-3" height="40" width="40" />
-                                            <div className="media-body align-self-center">
-                                                <h6 className="m-0">{credit.name}</h6>
-                                                <small className="text-muted">{credit.character}</small>
-                                            </div>
-                                        </div>
+                                    <div className="embed-responsive embed-responsive-16by9">
+                                        <iframe className="embed-responsive-item" src={videoId} allowFullScreen title="video"></iframe>
                                     </div>
-                                )}
-                            </div>
+                                </div>
 
+                                <div className="col-sm-6">
+                                    <h3>Credits {film.credits.cast.name}</h3>
+
+                                    <div className="list-group">
+                                        {film.credits.cast.slice(0, 10).map((credit) =>
+                                            <div className="list-group-item" key={credit.id}>
+                                                <div className="media">
+                                                    <img src={ `https://image.tmdb.org/t/p/w66_and_h66_bestv2${credit.profile_path}` } alt="goodalt" className="mr-3" height="40" width="40" />
+                                                    <div className="media-body align-self-center">
+                                                        <h6 className="m-0">{credit.name}</h6>
+                                                        <small className="text-muted">{credit.character}</small>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        )}
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
