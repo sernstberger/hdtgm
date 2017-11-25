@@ -69,33 +69,33 @@ class Movie extends React.Component {
                         </div>
                         <div className="col-xl-10">
                             <div className="row">
-                                <div className="col-sm-6">
-                                    <button className="btn">Watch Trailer</button>
 
-                                    <h3>Trailer</h3>
+                              <div className="col-sm-6">
+                                  <h3>Trailer</h3>
 
-                                    <div className="embed-responsive embed-responsive-16by9">
-                                        <iframe className="embed-responsive-item" src={videoId} allowFullScreen title="video"></iframe>
-                                    </div>
-                                </div>
+                                  <div className="embed-responsive embed-responsive-16by9">
+                                      <iframe className="embed-responsive-item" src={videoId} allowFullScreen title="video"></iframe>
+                                  </div>
+                              </div>
 
-                                <div className="col-sm-6">
-                                    <h3>Credits {film.credits.cast.name}</h3>
 
-                                    <div className="list-group">
-                                        {film.credits.cast.slice(0, 10).map((credit) =>
-                                            <div className="list-group-item" key={credit.id}>
-                                                <div className="media">
-                                                    <img src={ `https://image.tmdb.org/t/p/w66_and_h66_bestv2${credit.profile_path}` } alt="goodalt" className="mr-3" height="40" width="40" />
-                                                    <div className="media-body align-self-center">
-                                                        <h6 className="m-0">{credit.name}</h6>
-                                                        <small className="text-muted">{credit.character}</small>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        )}
-                                    </div>
-                                </div>
+                              <div className="col-sm-6">
+                                  <h3>Credits {film.credits.cast.name}</h3>
+
+                                  <div className="list-group">
+                                      {film.credits.cast.slice(0, 10).map((credit) =>
+                                          <div className="list-group-item" key={credit.id}>
+                                              <div className="media">
+                                                  <img src={ `https://image.tmdb.org/t/p/w66_and_h66_bestv2${credit.profile_path}` } alt="goodalt" className="mr-3" height="40" width="40" />
+                                                  <div className="media-body align-self-center">
+                                                      <h6 className="m-0">{credit.name}</h6>
+                                                      <small className="text-muted">{credit.character}</small>
+                                                  </div>
+                                              </div>
+                                          </div>
+                                      )}
+                                  </div>
+                              </div>
                             </div>
                         </div>
                     </div>
