@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import { connect } from 'react-redux';
 import { searchDatabase, clearMovie } from '../actions';
 
-import  MovieCard  from './movie-card';
+import  MovieCard  from './MovieCard';
 
 class Results extends Component { 
     componentDidMount(){

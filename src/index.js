@@ -8,7 +8,7 @@ import promise from 'redux-promise';
 import Header from './components/Header';
 // import Footer from './components/Footer';
 import Home from './components/Home';
-// import Results from './components/results';
+import Results from './components/results';
 import Movie from './components/Movie';
 import reducers from './reducers';
 import registerServiceWorker from './registerServiceWorker';
@@ -24,7 +24,7 @@ ReactDOM.render(
                 {<Header />  }
                 
                 <Switch >
-                    {/* <Route path="/search/:term" component={ Results }/> */}
+                    <Route path="/search/:term" component={ Results }/>
                     <Route path="/movie/:id" component={ Movie } />
                     <Route path="/" component={ Home } />
                 </Switch>
