@@ -22,7 +22,7 @@ body {
   margin: 0;
   padding: 0;
   font-family: sans-serif;
-  background: #CCC;
+  background: #fff;
   font-family: $font-family-sans-serif;
 
   @include media-breakpoint-up(sm) {
@@ -134,21 +134,51 @@ a {
   }
 }
 
-.poster {
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.5), 0 5px 30px rgba(0, 0, 0, 0.3);
-}
-
 
 
 .navbar {
   @include gradient-x($primary, $secondary);
   box-shadow: 0 0 30px rgba(black, .3);
+  padding-bottom: 6px;
+  padding-top: 6px;
 }
 
 .navbar-brand {
-  font-family: $font-family-display;
+  // font-family: $font-family-display;
+  img {
+    height: 34px;
+  }
 }
 
+.poster {
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.5), 0 5px 30px rgba(0, 0, 0, 0.3);
+  margin-bottom: 5px;
+  transition: 250ms all;
+}
+
+.movie-card {
+  margin-top: 1rem;
+
+  .movie-title {
+    color: #000;
+    margin: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  a {
+    &:hover {
+      color: red;
+      text-decoration: none;
+
+      .poster {
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.5), 0 5px 30px rgba(0, 0, 0, 0.5);
+        margin-bottom: 5px;
+        filter: brightness(1.3);
+      }
+    }
+  }
+}
 
 
 
