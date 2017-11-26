@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import { fetchPopular, clearMovie } from "../../actions";
 
 import MovieCard from '../MovieCard';
+import SearchInput, {createFilter} from 'react-search-input'
 
 class Home extends React.Component {
     componentDidMount() {
@@ -25,7 +26,10 @@ class Home extends React.Component {
           return new Date(a.release_date).getTime() - 
               new Date(b.release_date).getTime()
         }).reverse();
-        console.log(films);
+
+        const filteredFilms = films.filter(createFilter("saga", ["title"]))
+
+        console.log(filteredFilms);
 
         return films.map(
           film =>
