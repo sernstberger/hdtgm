@@ -10,6 +10,14 @@ class Home extends React.Component {
         this.props.fetchPopular();
         window.scrollTo(0, 0)
     }
+
+    constructor (props) {
+      super(props)
+      this.state = {
+        searchTerm: ''
+      }
+      this.searchUpdated = this.searchUpdated.bind(this)
+    }
     
     renderPopular() {
         // Ajax Spinner for loading
@@ -27,11 +35,11 @@ class Home extends React.Component {
               new Date(b.release_date).getTime()
         }).reverse();
 
-        const filteredFilms = films.filter(createFilter("saga", ["title"]))
+        const filteredFilms = films.filter(createFilter(this.state.searchTerm, ["title"]))
 
         console.log(filteredFilms);
 
-        return films.map(
+        return filteredFilms.map(
           film =>
             <MovieCard key={film.id} film={film} />
         );        
@@ -45,7 +53,8 @@ class Home extends React.Component {
               <br/>
               <br/>
                 <h1>Movies</h1>
-                <input placeholder="search" />
+                {/* <SearchInput className="search-input" onChange={this.searchUpdated} /> */}
+                <SearchInput className="search-input" onChange={this.searchUpdated} />
                 <p>filters</p>
                 <div className="row">
                     { this.renderPopular() }
@@ -390,6 +399,9 @@ ive episod
 
             </div>
         )
+    }
+    searchUpdated (term) {
+      this.setState({searchTerm: term})
     }
 }
 
